@@ -19,10 +19,10 @@ private:
 	std::string player_name_ = "";				//キャラネーム
 	int player_hp_ = 0;							//プレイヤーの体力
 	int player_atk_ = 0;						//プレイヤーの攻撃力
-	tnl::Vector3 player_pos_ {100,9350,0};	//プレイヤーの位置
+	tnl::Vector3 player_pos_ {150,9350,0};	//プレイヤーの位置
 	int jump_count_ = 0;						//ジャンプの回数
 	//プレイヤーサイズ
-	const int width_ = 50;						//幅
+	const int width_ = 45;						//幅
 	const int height_ = 50;						//高さ
 
 	float speed_ = 0.0f;						//プレイヤー速度
@@ -32,8 +32,8 @@ private:
 	bool player_jump_flag_ = false;				//ジャンプをしているかの判定
 
 	enum PlayerAnime {
-		DIR_LEFT,
 		DIR_RIGHT,
+		DIR_LEFT,
 		DIR_MAX
 	};
 

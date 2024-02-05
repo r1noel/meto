@@ -39,6 +39,9 @@
     <Filter Include="program\[003] game\[004]gmobject">
       <UniqueIdentifier>{c3d475af-2957-43fe-95dd-c888f7d142a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="program\[002]unl">
+      <UniqueIdentifier>{79714b85-0eaa-4da7-b6b0-f4567c76f83f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ManagedDxlGame.cpp">
@@ -190,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="program\game\gmobject\m_chip.cpp">
       <Filter>program\[003] game\[004]gmobject</Filter>
+    </ClCompile>
+    <ClCompile Include="program\game\unl.cpp">
+      <Filter>program\[002]unl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +382,9 @@
     </ClInclude>
     <ClInclude Include="program\game\gmobject\m_chip.h">
       <Filter>program\[003] game\[004]gmobject</Filter>
+    </ClInclude>
+    <ClInclude Include="program\game\unl.h">
+      <Filter>program\[002]unl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 #include "../../dxlib_ext/dxlib_ext.h"
+#include"../unl.h"
 #include "scene_play.h"
 #include "scene_title.h"
 #include "../common/gm_manager.h"
@@ -42,6 +43,23 @@ void ScenePlay::update(float delta_time) {
 	int player_width = player_->getWidthSize();
 	int player_height = player_->getHeightSize();
 
-
+	auto it = map_->map_list_.begin();
+	while (it != map_->map_list_.end()) {
+		if (unl::IsIntersectRectToCorrectPosition(
+			player_->getPlayerPos(),
+			prev_pos,
+			player_width,
+			player_height,
+			(*it)->map_chip_pos_,
+			map_->getWidth(),
+			map_->getHeight())) {
+			// ƒWƒƒƒ“ƒv‚ð‚µ‚Ä‚¢‚È‚¢Žž‚Í”’l‚ð‚O‚É‚·‚é
+			player_->getDropTime();
+			player_->getSpeed();
+			player_->getJumpCount();
+		}
+		it++;
+	}
+	
 	
 }
