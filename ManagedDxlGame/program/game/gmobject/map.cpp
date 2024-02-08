@@ -14,6 +14,7 @@ Map::Map() {
 	map_chip_all_size_ = map_chip_x_size_ * map_chip_y_size_;
 	gpc_map_chip_hdls_ = new int[map_chip_all_size_];
 
+	//マップチップ画像読込
 	LoadDivGraph(gpc_map_chip_hdls_pass_.c_str(),
 		map_chip_all_size_,
 		map_chip_x_size_,
@@ -22,9 +23,9 @@ Map::Map() {
 		map_chip_height_,
 		gpc_map_chip_hdls_);
 
-	//マップデータのロード
+	//マップCSVデータのロード
 	map_data_csv_pass_ = "csv/map2.csv";
-
+	//マップデータにCSVの情報を持たせる
 	map_data_ = tnl::LoadCsv<int>(map_data_csv_pass_);
 
 	for (int y = 0; y < map_data_.size();++y) {
@@ -37,16 +38,20 @@ Map::Map() {
 		}
 	}
 }
+
 void Map::draw(const std::shared_ptr<Camera> camera) {
 
+	//ステージの表示
 	auto it = map_list_.begin();
 	while (it != map_list_.end()) {
 
-		DrawGraph((*it)->draw_pos.x,(*it)->draw_pos.y, gpc_map_chip_hdls_[static_cast<int>((*it)->chipType_)], true);
+		DrawRotaGraph((*it)->draw_pos.x, (*it)->draw_pos.y, 1.0, 0, gpc_map_chip_hdls_[static_cast<int>((*it)->chipType_)], true);
+		
+		DrawBoxEx((*it)->draw_pos, MapChip::CHIP_SIZE, MapChip::CHIP_SIZE, false);
 		++it;
-
 	}
 }
+
 void Map::update(float delta_time, const std::shared_ptr<Camera> camera) {
 
 	auto it = map_list_.begin();
@@ -54,11 +59,11 @@ void Map::update(float delta_time, const std::shared_ptr<Camera> camera) {
 
 		(*it)->update(delta_time, camera);
 
-
 		++it;
 	}
 
 }
+
 int Map::getWidth() {
 
 	return map_chip_width_;

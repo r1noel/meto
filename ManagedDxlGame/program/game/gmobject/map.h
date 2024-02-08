@@ -5,9 +5,6 @@
 
 class Map {
 private:
-
-	Shared<MapChip> map_chip_;
-
 	std::string gpc_map_chip_hdls_pass_;						//画像パス
 	int map_chip_width_;										//マップチップの幅
 	int map_chip_height_;										//マップチップの高さ
@@ -20,8 +17,6 @@ private:
 
 	std::string map_data_csv_pass_;								//マップCSVデータパス
 	std::vector < std::vector <int>> map_data_;					//マップデータ
-
-	
 
 	tnl::Vector3 pos_;
 

@@ -22,15 +22,16 @@ private:
 	tnl::Vector3 player_pos_ {150,9350,0};	//プレイヤーの位置
 	int jump_count_ = 0;						//ジャンプの回数
 	//プレイヤーサイズ
-	const int width_ = 45;						//幅
-	const int height_ = 50;						//高さ
-
+	const int width_ = 46;						//幅
+	const int height_ = 48;						//高さ
+	
 	float speed_ = 0.0f;						//プレイヤー速度
 	float acceleration_ = 1.0f;					//重力加速度
 	float drop_time_ = 0.0f;					//滞空時間
 
 	bool player_jump_flag_ = false;				//ジャンプをしているかの判定
 
+	//プレイヤーアニメーション種類（向き）
 	enum PlayerAnime {
 		DIR_RIGHT,
 		DIR_LEFT,
@@ -40,6 +41,6 @@ private:
 	float anim_time_count_ = 0;
 	int anim_ctrl_dir_ = DIR_RIGHT;
 	int anim_ctr_frame_ = 0;
-	int anim_hdls_[DIR_MAX][2];
+	int anim_hdls_[DIR_MAX][3];
 
 };

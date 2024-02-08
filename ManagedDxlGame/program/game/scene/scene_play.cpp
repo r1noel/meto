@@ -28,7 +28,6 @@ void ScenePlay::draw() {
 	if (player_->getPlayerPos().y >= 550) {
 
 	}
-
 }
 
 void ScenePlay::update(float delta_time) {
@@ -43,6 +42,7 @@ void ScenePlay::update(float delta_time) {
 	int player_width = player_->getWidthSize();
 	int player_height = player_->getHeightSize();
 
+	//ステージとプレイヤーの当たり判定処理
 	auto it = map_->map_list_.begin();
 	while (it != map_->map_list_.end()) {
 		if (unl::IsIntersectRectToCorrectPosition(

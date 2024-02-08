@@ -197,6 +197,9 @@
     <ClCompile Include="program\game\unl.cpp">
       <Filter>program\[002]unl</Filter>
     </ClCompile>
+    <ClCompile Include="program\game\chara\enemy.cpp">
+      <Filter>program\[003] game\[002] chara</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ManagedDxlGame.rc">
@@ -385,6 +388,12 @@
     </ClInclude>
     <ClInclude Include="program\game\unl.h">
       <Filter>program\[002]unl</Filter>
+    </ClInclude>
+    <ClInclude Include="program\game\chara\enemy_base.h">
+      <Filter>program\[003] game\[002] chara</Filter>
+    </ClInclude>
+    <ClInclude Include="program\game\chara\enemy.h">
+      <Filter>program\[003] game\[002] chara</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
