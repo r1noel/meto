@@ -7,6 +7,7 @@ GameManager::GameManager(SceneBase* start_scene) : now_scene_(start_scene) {
 }
 
 GameManager* GameManager::GetInstance(SceneBase* start_scene) {
+
 	static GameManager* instance = nullptr;
 	if (!instance) {
 		instance = new GameManager(start_scene);
@@ -16,12 +17,15 @@ GameManager* GameManager::GetInstance(SceneBase* start_scene) {
 }
 
 void GameManager::Destroy() {
+
 	delete GetInstance();
 }
 
 void GameManager::changeScene(SceneBase* next_scene) {
+
 	next_scene_ = next_scene;
 	now_scene_ = next_scene_;
+
 }
 
 void GameManager::update(float delta_time) {

@@ -3,10 +3,12 @@
 
 Map::Map() {
 
+	//ステージ背景画像ハンドル
 	bg_gpc_hdl_ = LoadGraph("graphics/bochi3.jpg");
+	//マップチップ画像ハンドル
 	gpc_map_chip_hdls_pass_ = "graphics/mapchip.png";
 
-
+	//マップチップの情報入力
 	map_chip_width_ = 48;
 	map_chip_height_ = 48;
 	map_chip_x_size_ = 5;
@@ -28,6 +30,7 @@ Map::Map() {
 	//マップデータにCSVの情報を持たせる
 	map_data_ = tnl::LoadCsv<int>(map_data_csv_pass_);
 
+	//マップチップCSVデータの呼び出し
 	for (int y = 0; y < map_data_.size();++y) {
 		for (int x = 0; x < map_data_[y].size();++x) {
 			
@@ -69,11 +72,13 @@ int Map::getWidth() {
 	return map_chip_width_;
 
 }
+
 int Map::getHeight() {
 
 	return map_chip_height_;
 
 }
+
 int Map::getGpcHdl() {
 
 	return bg_gpc_hdl_;

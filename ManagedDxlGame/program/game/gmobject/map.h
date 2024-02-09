@@ -5,6 +5,7 @@
 
 class Map {
 private:
+
 	std::string gpc_map_chip_hdls_pass_;						//画像パス
 	int map_chip_width_;										//マップチップの幅
 	int map_chip_height_;										//マップチップの高さ

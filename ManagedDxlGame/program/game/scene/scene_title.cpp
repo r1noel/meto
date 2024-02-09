@@ -4,6 +4,7 @@
 #include "../common/gm_manager.h"
 
 SceneTitle::SceneTitle() {
+
 	//背景画像読込
 	title_gpc_hdl_ = LoadGraph("graphics/bone285.jpg");
 	//BGM読込
@@ -11,7 +12,10 @@ SceneTitle::SceneTitle() {
 	//BGMループ再生
 	PlaySoundMem(title_bgm_, DX_PLAYTYPE_LOOP, true);
 }
+
 void SceneTitle::update(float delta_time) {
+
+	//背景画像表示
 	DrawRotaGraph(630, 350, 1.0f, 0, title_gpc_hdl_, true);
 	//プレイシーンへ移動
 	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN) || tnl::Input::IsPadDownTrigger(ePad::KEY_MAX)) {

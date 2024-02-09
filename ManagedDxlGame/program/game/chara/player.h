@@ -4,6 +4,7 @@ class Camera;
 
 class Player {
 public:
+
 	Player();
 	void update(float delta_time);
 	void draw(const std::shared_ptr<Camera> camera);
@@ -14,7 +15,9 @@ public:
 	float getSpeed();
 	float getDropTime();
 	int getJumpCount();
+
 private:
+
 	//プレイヤー情報
 	std::string player_name_ = "";				//キャラネーム
 	int player_hp_ = 0;							//プレイヤーの体力

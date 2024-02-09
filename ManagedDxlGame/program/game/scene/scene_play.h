@@ -5,6 +5,7 @@
 
 class ScenePlay : public SceneBase {
 public:
+
 	//プレイシーンのコンストラクタ
 	ScenePlay();
 	//プレイシーンのデストラクタ

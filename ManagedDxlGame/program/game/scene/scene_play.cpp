@@ -6,6 +6,7 @@
 
 
 ScenePlay::ScenePlay() {
+
 	//マップ生成
 	map_ = std::make_shared<Map>();
 	//プレイヤー生成
@@ -13,7 +14,9 @@ ScenePlay::ScenePlay() {
 	//カメラ生成
 	camera_ = std::make_shared<Camera>();
 
+	unl::jump_reset_flag_ = true;
 }
+
 ScenePlay::~ScenePlay() {
 
 
@@ -28,10 +31,14 @@ void ScenePlay::draw() {
 	if (player_->getPlayerPos().y >= 550) {
 
 	}
+
+	DrawStringEx(0, 400, -1, "up = %d", unl::jump_reset_flag_);
+	DrawStringEx(0, 450, -1, "side = %d", unl::side_flag_);
 }
 
 void ScenePlay::update(float delta_time) {
 
+	//背景画像の表示
 	DrawRotaGraph(630, 350, 1.0f, 0, map_->getGpcHdl(), true);
 	if (map_)map_->update(delta_time, camera_);
 	if (player_) player_->update(delta_time);
@@ -53,12 +60,23 @@ void ScenePlay::update(float delta_time) {
 			(*it)->map_chip_pos_,
 			map_->getWidth(),
 			map_->getHeight())) {
-			// ジャンプをしていない時は数値を０にする
-			player_->getDropTime();
-			player_->getSpeed();
-			player_->getJumpCount();
+			if (unl::jump_reset_flag_ == true) {
+
+				
+				player_->getJumpCount();
+
+				// ジャンプをしていない時は数値を０にする
+				player_->getDropTime();
+				player_->getSpeed();
+				if (unl::side_flag_ == false) {
+					// ジャンプをしていない時は数値を０にする
+						/*player_->getDropTime();
+					player_->getSpeed();*/
+				}
+			}
 		}
 		it++;
+
 	}
 	
 	
