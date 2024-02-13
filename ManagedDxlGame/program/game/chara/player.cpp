@@ -20,7 +20,7 @@ Player::Player() {
 }
 
 
-void Player::draw(const std::shared_ptr<Camera> camera) {
+void Player::draw(const Shared<Camera> camera) {
 
 	tnl::Vector3 draw_pos = player_pos_ - camera->target_ + tnl::Vector3(DXE_WINDOW_WIDTH >> 1, DXE_WINDOW_HEIGHT >> 1, 0);		//カメラがプレイヤーを追従
 	DrawStringEx(10, 20, -1, "プレイヤー.x = %f y = %f", player_pos_.x, player_pos_.y);
@@ -61,9 +61,7 @@ void Player::update(float delta_time) {
 	if (tnl::Input::IsKeyDown(eKeys::KB_S)) {
 		player_pos_.y += 20.0f;
 	}
-	/*if (unl::side_flag_) {
-		speed_ = 0;
-	}*/
+
 		player_pos_.y += speed_;
 
 	//ジャンプの落下処理
@@ -75,7 +73,7 @@ void Player::update(float delta_time) {
 //ジャンプ機能
 void Player::jump() {
 
-	speed_ = -10.5f;															//ジャンプの飛距離
+	speed_ = -10.0f;															//ジャンプの飛距離
 	jump_count_++;																//ジャンプ数のカウント
 
 }

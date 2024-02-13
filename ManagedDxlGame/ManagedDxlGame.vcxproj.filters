@@ -200,6 +200,9 @@
     <ClCompile Include="program\game\chara\enemy.cpp">
       <Filter>program\[003] game\[002] chara</Filter>
     </ClCompile>
+    <ClCompile Include="program\game\gmobject\bullet.cpp">
+      <Filter>program\[003] game\[004]gmobject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ManagedDxlGame.rc">
@@ -394,6 +397,9 @@
     </ClInclude>
     <ClInclude Include="program\game\chara\enemy.h">
       <Filter>program\[003] game\[002] chara</Filter>
+    </ClInclude>
+    <ClInclude Include="program\game\gmobject\bullet.h">
+      <Filter>program\[003] game\[004]gmobject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

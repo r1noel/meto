@@ -25,8 +25,8 @@ public:
 
 	Map();
 
-	void update(float delta_time, const std::shared_ptr<Camera> camera);
-	void draw(const std::shared_ptr<Camera> camera);
+	void update(float delta_time, const Shared<Camera> camera);
+	void draw(const Shared<Camera> camera);
 	std::list<MapChip*> map_list_;
 	
 	int getWidth();

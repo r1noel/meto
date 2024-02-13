@@ -42,7 +42,7 @@ Map::Map() {
 	}
 }
 
-void Map::draw(const std::shared_ptr<Camera> camera) {
+void Map::draw(const Shared<Camera> camera) {
 
 	//ステージの表示
 	auto it = map_list_.begin();
@@ -55,7 +55,7 @@ void Map::draw(const std::shared_ptr<Camera> camera) {
 	}
 }
 
-void Map::update(float delta_time, const std::shared_ptr<Camera> camera) {
+void Map::update(float delta_time, const Shared<Camera> camera) {
 
 	auto it = map_list_.begin();
 	while (it != map_list_.end()) {

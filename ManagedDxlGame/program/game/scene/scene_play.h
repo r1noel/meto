@@ -2,6 +2,8 @@
 #include "../common/gm_scene_base.h"
 #include "../gmobject/map.h"
 #include "../chara/player.h"
+#include "../chara/enemy.h"
+#include "../gmobject/bullet.h"
 
 class ScenePlay : public SceneBase {
 public:
@@ -16,8 +18,11 @@ public:
 
 private:
 
-	std::shared_ptr<Map> map_ = nullptr;
-	std::shared_ptr<Player> player_ = nullptr;
-	std::shared_ptr<Camera> camera_ = nullptr;
-	
+	Shared<Map> map_ = nullptr;
+	Shared<Player> player_ = nullptr;
+	Shared<Camera> camera_ = nullptr;
+	Shared<TrackingEnemy> t_enemy_ = nullptr;
+	Shared<ShootEnemy> s_enemy_ = nullptr;
+	Shared<Bullet> s_bullet_ = nullptr;
+
 };

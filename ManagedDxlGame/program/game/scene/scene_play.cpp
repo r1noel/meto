@@ -13,6 +13,12 @@ ScenePlay::ScenePlay() {
 	player_ = std::make_shared<Player>();
 	//カメラ生成
 	camera_ = std::make_shared<Camera>();
+	//追尾エネミー生成
+	t_enemy_ = std::make_shared<TrackingEnemy>();
+	//射撃エネミー生成
+	s_enemy_ = std::make_shared<ShootEnemy>();
+	//射撃エネミーの弾生成
+	s_bullet_ = std::make_shared<Bullet>();
 
 	unl::jump_reset_flag_ = true;
 }
@@ -70,7 +76,7 @@ void ScenePlay::update(float delta_time) {
 				player_->getSpeed();
 				if (unl::side_flag_ == false) {
 					// ジャンプをしていない時は数値を０にする
-						/*player_->getDropTime();
+					/*player_->getDropTime();
 					player_->getSpeed();*/
 				}
 			}

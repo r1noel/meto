@@ -7,7 +7,7 @@ public:
 
 	Player();
 	void update(float delta_time);
-	void draw(const std::shared_ptr<Camera> camera);
+	void draw(const Shared<Camera> camera);
 	void jump();
 	tnl::Vector3& getPlayerPos();
 	int getWidthSize();
@@ -42,8 +42,11 @@ private:
 	};
 
 	float anim_time_count_ = 0;
+	//プレイヤーアニメーション向き
 	int anim_ctrl_dir_ = DIR_RIGHT;
+	//プレイヤーアニメーションフレーム数
 	int anim_ctr_frame_ = 0;
+	//プレイヤーアニメーションハンドル
 	int anim_hdls_[DIR_MAX][3];
 
 };
