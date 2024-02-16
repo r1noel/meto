@@ -1,21 +1,20 @@
 #pragma once
 #include "../dxlib_ext/dxlib_ext.h"
-#include "../chara/player.h"
-#include "../chara/enemy.h"
 
-class Bullet {
+
+class Player;
+class ShootEnemy;
+
+class EnemyBullet {
 public:
 
-	Bullet(tnl::Vector3 bulletpos) { bullet_pos_ = bulletpos; }
+	EnemyBullet(tnl::Vector3 bulletpos, tnl::Vector3 targetpos);
 	float radius_ = 10;
 	//弾の位置情報
-	tnl::Vector3 bullet_pos_;
-	//弾速を設定する関数
-	void setVelocity(const tnl::Vector3& velocity) {
+	tnl::Vector3 e_bullet_pos_;
+	//ターゲット位置情報
+	tnl::Vector3 target_pos_;
 
-		velocity_ = velocity;
-
-	}
 
 	void update(float delta_time);
 	void draw();
@@ -24,9 +23,9 @@ private:
 
 	Shared<Player> player_;
 	Shared<ShootEnemy> s_enemy_;
-	//速度
-	tnl::Vector3 velocity_;
+	//移動量
+	tnl::Vector3 moveValue_;
 	//弾速
-	float bullet_speed_ = 5.0f;
+	float e_bullet_speed_ = 5.0f;
 
 };

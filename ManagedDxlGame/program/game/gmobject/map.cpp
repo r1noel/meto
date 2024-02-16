@@ -24,7 +24,6 @@ Map::Map() {
 		map_chip_width_,
 		map_chip_height_,
 		gpc_map_chip_hdls_);
-
 	//マップCSVデータのロード
 	map_data_csv_pass_ = "csv/map2.csv";
 	//マップデータにCSVの情報を持たせる
@@ -35,7 +34,7 @@ Map::Map() {
 		for (int x = 0; x < map_data_[y].size();++x) {
 			
 			if (map_data_[y][x] == -1) continue;
-				map_list_.emplace_back(new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0)));
+				map_list_.emplace_back(new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]));
 
 			
 		}
@@ -48,9 +47,9 @@ void Map::draw(const Shared<Camera> camera) {
 	auto it = map_list_.begin();
 	while (it != map_list_.end()) {
 
-		DrawRotaGraph((*it)->draw_pos.x, (*it)->draw_pos.y, 1.0, 0, gpc_map_chip_hdls_[static_cast<int>((*it)->chipType_)], true);
+		DrawRotaGraph((*it)->draw_pos.x, (*it)->draw_pos.y, 1.0, 0,(*it)-> map_chip_gpc_hdl_, true);
 		
-		DrawBoxEx((*it)->draw_pos, MapChip::CHIP_SIZE, MapChip::CHIP_SIZE, false);
+		//DrawBoxEx((*it)->draw_pos, MapChip::CHIP_SIZE, MapChip::CHIP_SIZE, false);
 		++it;
 	}
 }

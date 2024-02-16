@@ -12,15 +12,14 @@ ScenePlay::ScenePlay() {
 	//プレイヤー生成
 	player_ = std::make_shared<Player>();
 	//カメラ生成
-	camera_ = std::make_shared<Camera>();
+	camera_ = std::make_shared<Camera>(player_->getPlayerPos());
 	//追尾エネミー生成
 	t_enemy_ = std::make_shared<TrackingEnemy>();
 	//射撃エネミー生成
 	s_enemy_ = std::make_shared<ShootEnemy>();
-	//射撃エネミーの弾生成
-	s_bullet_ = std::make_shared<Bullet>();
 
 	unl::jump_reset_flag_ = true;
+
 }
 
 ScenePlay::~ScenePlay() {
@@ -49,6 +48,8 @@ void ScenePlay::update(float delta_time) {
 	if (map_)map_->update(delta_time, camera_);
 	if (player_) player_->update(delta_time);
 	if (camera_) camera_->update(delta_time,player_->getPlayerPos());
+	if (t_enemy_)t_enemy_->update(delta_time);
+	if (s_enemy_)s_enemy_->update(delta_time);
 
 
 	tnl::Vector3 prev_pos = player_->getPlayerPos();
@@ -66,18 +67,17 @@ void ScenePlay::update(float delta_time) {
 			(*it)->map_chip_pos_,
 			map_->getWidth(),
 			map_->getHeight())) {
-			if (unl::jump_reset_flag_ == true) {
+			if (unl::jump_reset_flag_ == true) {	
 
-				
 				player_->getJumpCount();
-
 				// ジャンプをしていない時は数値を０にする
 				player_->getDropTime();
 				player_->getSpeed();
+
 				if (unl::side_flag_ == false) {
 					// ジャンプをしていない時は数値を０にする
-					/*player_->getDropTime();
-					player_->getSpeed();*/
+					//player_->getDropTime();
+					//player_->getSpeed();
 				}
 			}
 		}

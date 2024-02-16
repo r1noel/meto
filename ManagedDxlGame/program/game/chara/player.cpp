@@ -44,23 +44,23 @@ void Player::update(float delta_time) {
 	//プレイヤー操作
 	if (tnl::Input::IsKeyDown(eKeys::KB_A)) {
 		anim_ctrl_dir_ = DIR_LEFT;												//左向
-		player_pos_.x -= 7.5f;													//左移動
+		player_pos_.x -= 5.5f;													//左移動
 	}
 	if (tnl::Input::IsKeyDown(eKeys::KB_D)) {
 		anim_ctrl_dir_ = DIR_RIGHT;												//右向
-		player_pos_.x += 7.5f;													//右移動
+		player_pos_.x += 5.5f;													//右移動
 	}
 	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_SPACE) && jump_count_ <= 1 ) {
 		jump();																	//ジャンプ
 	}
 	if (tnl::Input::IsMouseTrigger(eMouseTrigger::IN_LEFT));					//攻撃
 	//デバック用
-	if (tnl::Input::IsKeyDown(eKeys::KB_W) ){
+	/*if (tnl::Input::IsKeyDown(eKeys::KB_W) ){
 		player_pos_.y -= 20.0f;
 	}
 	if (tnl::Input::IsKeyDown(eKeys::KB_S)) {
 		player_pos_.y += 20.0f;
-	}
+	}*/
 
 		player_pos_.y += speed_;
 

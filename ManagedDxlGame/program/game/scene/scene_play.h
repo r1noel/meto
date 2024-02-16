@@ -23,6 +23,5 @@ private:
 	Shared<Camera> camera_ = nullptr;
 	Shared<TrackingEnemy> t_enemy_ = nullptr;
 	Shared<ShootEnemy> s_enemy_ = nullptr;
-	Shared<Bullet> s_bullet_ = nullptr;
 
 };

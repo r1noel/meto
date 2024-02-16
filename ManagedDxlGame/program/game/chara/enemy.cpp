@@ -18,6 +18,7 @@ TrackingEnemy::TrackingEnemy() {
 	e_hp_ = 100;
 	e_att_ = 10;
 	e_move_speed_ = 1.0f;
+
 	player_ = std::make_shared<Player>();
 }
 
@@ -66,11 +67,16 @@ ShootEnemy::ShootEnemy() {
 	e_hp_ = 125;
 	e_att_ = 15;
 
+	player_=std::make_shared<Player>();
 }
 
 void ShootEnemy::draw() {
 
 	DrawBoxEx(se_pos_, se_width_, se_height_, false);
+
+	tnl::Vector3 player_pos_ = player_->getPlayerPos();
+
+	e_bullet_list.emplace_back(new EnemyBullet(tnl::Vector3(se_pos_.x, se_pos_.y, 0),tnl::Vector3(player_pos_.x,player_pos_.y,0)));
 
 }
 

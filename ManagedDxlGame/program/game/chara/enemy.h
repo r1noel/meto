@@ -2,8 +2,12 @@
 #include "../dxlib_ext/dxlib_ext.h"
 #include "enemy_base.h"
 #include "player.h"
+#include "../gmobject/bullet.h"
+#include <list>
 
-//追尾エネミー
+class EnemyBullet;
+
+//追尾エネミー 98
 class TrackingEnemy : public EnemyBase {
 public:
 
@@ -49,8 +53,9 @@ public:
 	LapsEnemy();
 
 };
-//射撃エネミー
-class ShootEnemy : EnemyBase {
+
+//射撃エネミー 99
+class ShootEnemy : public EnemyBase {
 public:
 
 	//射撃エネミーコンストラクタ
@@ -60,6 +65,8 @@ public:
 
 	void update(float delta_time);
 	void draw();
+
+	std::list<EnemyBullet*> e_bullet_list;
 
 private:
 
@@ -80,5 +87,6 @@ private:
 	int se_anim_ctr_frame_ = 0;
 	int se_anim_hdls_[SE_DIR_MAX][3];
 
+	Shared<Player> player_;
 };
 
