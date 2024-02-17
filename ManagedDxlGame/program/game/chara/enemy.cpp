@@ -57,7 +57,8 @@ void TrackingEnemy::update(float delta_time) {
 ShootEnemy::ShootEnemy() {
 
 	std::string files[SE_DIR_MAX] = {
-
+		"graphics/se_left.png",
+		"graphics/se_right.png"
 	};
 
 	for (int i = 0; i < SE_DIR_MAX; ++i) {

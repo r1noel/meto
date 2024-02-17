@@ -32,5 +32,6 @@ public:
 	int getWidth();
 	int getHeight();
 	int getGpcHdl();
+	std::vector < std::vector <int>> getMapData();
 
 };

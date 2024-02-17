@@ -15,6 +15,7 @@ public:
 	TrackingEnemy();
 	void update(float delta_time);
 	void draw();
+	bool getAliveFlag();
 
 private:
 
@@ -25,6 +26,8 @@ private:
 	const int te_height_ = 48;						//高さ
 
 	float elapsed_time_ = 0.0f;
+
+
 
 	//エネミーアニメーション種類（向き）
 	enum TrackingEnemyAnime {
@@ -65,6 +68,7 @@ public:
 
 	void update(float delta_time);
 	void draw();
+	bool getAliveFlag();
 
 	std::list<EnemyBullet*> e_bullet_list;
 
@@ -72,8 +76,11 @@ private:
 
 	tnl::Vector3 se_pos_;
 
+	//幅
 	const int se_width_ = 32;
+	//高さ
 	const int se_height_ = 32;
+
 
 	//エネミーアニメーション種類（向き）
 	enum ShootEnemyAnime {

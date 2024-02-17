@@ -83,3 +83,7 @@ int Map::getGpcHdl() {
 	return bg_gpc_hdl_;
 
 }
+std::vector < std::vector <int>> Map::getMapData() {
+
+	return map_data_;
+}

@@ -1,6 +1,8 @@
 #pragma once
 
+
 class Camera;
+
 
 class Player {
 public:
@@ -48,5 +50,11 @@ private:
 	int anim_ctr_frame_ = 0;
 	//プレイヤーアニメーションハンドル
 	int anim_hdls_[DIR_MAX][3];
+
+	float effect_time_count_ = 0;
+	int effect_ctrl_fream_ = 0;
+	int atk_effect_hdl_[15];
+	bool effect_flag_ = true;
+
 
 };
