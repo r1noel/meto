@@ -21,6 +21,8 @@ private:
 
 	tnl::Vector3 pos_;
 
+
+
 public:
 
 	Map();

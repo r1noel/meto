@@ -1,5 +1,4 @@
 #pragma once
-#include "../chara/player.h"
 #include "../camera/camera.h"
 
 class MapChip {
@@ -13,7 +12,7 @@ public:
 
 	tnl::Vector3 map_chip_pos_ {0, 0, 0};
 
-	void update(float delta_time, const Shared<Camera> camera);
+	void draw(const Shared<Camera> camera);
 	tnl::Vector3 draw_pos;
 
 private:

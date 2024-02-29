@@ -33,7 +33,7 @@ void GameManager::update(float delta_time) {
 	if (now_scene_) now_scene_->update(delta_time);
 	if (now_scene_) now_scene_->draw();
 
-	DrawStringEx(10, 10, -1, "%x", GetInstance());
+	//DrawStringEx(10, 10, -1, "%x", GetInstance());
 
 
 	

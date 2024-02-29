@@ -35,10 +35,10 @@ Map::Map() {
 			
 			if (map_data_[y][x] == -1) continue;
 				map_list_.emplace_back(new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]));
-
 			
 		}
 	}
+
 }
 
 void Map::draw(const Shared<Camera> camera) {
@@ -47,24 +47,25 @@ void Map::draw(const Shared<Camera> camera) {
 	auto it = map_list_.begin();
 	while (it != map_list_.end()) {
 
+		(*it)->draw(camera);
+
 		DrawRotaGraph((*it)->draw_pos.x, (*it)->draw_pos.y, 1.0, 0,(*it)-> map_chip_gpc_hdl_, true);
-		
+
 		//DrawBoxEx((*it)->draw_pos, MapChip::CHIP_SIZE, MapChip::CHIP_SIZE, false);
 		++it;
 	}
 }
 
-void Map::update(float delta_time, const Shared<Camera> camera) {
-
-	auto it = map_list_.begin();
-	while (it != map_list_.end()) {
-
-		(*it)->update(delta_time, camera);
-
-		++it;
-	}
-
-}
+//void Map::update(float delta_time, const Shared<Camera> camera) {
+//
+//	//auto it = map_list_.begin();
+//	//while (it != map_list_.end()) {
+//
+//	//	
+//	//	++it;
+//	//}
+//
+//}
 
 int Map::getWidth() {
 
@@ -85,5 +86,5 @@ int Map::getGpcHdl() {
 }
 std::vector < std::vector <int>> Map::getMapData() {
 
-	return map_data_;
+	return map_data_ = tnl::LoadCsv<int>(map_data_csv_pass_);
 }

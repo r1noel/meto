@@ -30,9 +30,6 @@
     <Filter Include="program\[003] game\[001]scene">
       <UniqueIdentifier>{848ade10-ac9d-4737-a48b-93a6e9feb52a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="program\[003] game\[002] chara">
-      <UniqueIdentifier>{92fc3512-e73d-4645-a632-c268094adb70}</UniqueIdentifier>
-    </Filter>
     <Filter Include="program\[003] game\[003]camera">
       <UniqueIdentifier>{722895d2-c4a4-4f09-ab58-aa10024e0588}</UniqueIdentifier>
     </Filter>
@@ -41,6 +38,9 @@
     </Filter>
     <Filter Include="program\[002]unl">
       <UniqueIdentifier>{79714b85-0eaa-4da7-b6b0-f4567c76f83f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="program\[003] game\[002]chara">
+      <UniqueIdentifier>{92fc3512-e73d-4645-a632-c268094adb70}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +183,7 @@
       <Filter>program\[003] game\[001]scene</Filter>
     </ClCompile>
     <ClCompile Include="program\game\chara\player.cpp">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClCompile>
     <ClCompile Include="program\game\camera\camera.cpp">
       <Filter>program\[003] game\[003]camera</Filter>
@@ -198,13 +198,16 @@
       <Filter>program\[002]unl</Filter>
     </ClCompile>
     <ClCompile Include="program\game\chara\enemy.cpp">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClCompile>
     <ClCompile Include="program\game\gmobject\bullet.cpp">
       <Filter>program\[003] game\[004]gmobject</Filter>
     </ClCompile>
     <ClCompile Include="program\game\chara\enemy_manager.cpp">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
+    </ClCompile>
+    <ClCompile Include="program\game\chara\enemy_base.cpp">
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -381,7 +384,7 @@
       <Filter>program\[003] game\[001]scene</Filter>
     </ClInclude>
     <ClInclude Include="program\game\chara\player.h">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClInclude>
     <ClInclude Include="program\game\camera\camera.h">
       <Filter>program\[003] game\[003]camera</Filter>
@@ -396,16 +399,16 @@
       <Filter>program\[002]unl</Filter>
     </ClInclude>
     <ClInclude Include="program\game\chara\enemy_base.h">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClInclude>
     <ClInclude Include="program\game\chara\enemy.h">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClInclude>
     <ClInclude Include="program\game\gmobject\bullet.h">
       <Filter>program\[003] game\[004]gmobject</Filter>
     </ClInclude>
     <ClInclude Include="program\game\chara\enemy_manager.h">
-      <Filter>program\[003] game\[002] chara</Filter>
+      <Filter>program\[003] game\[002]chara</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

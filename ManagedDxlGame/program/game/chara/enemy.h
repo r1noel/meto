@@ -3,6 +3,7 @@
 #include "enemy_base.h"
 #include "player.h"
 #include "../gmobject/bullet.h"
+#include "../gmobject/m_chip.h"
 #include <list>
 
 class EnemyBullet;
@@ -10,27 +11,30 @@ class EnemyBullet;
 //追尾エネミー 98
 class TrackingEnemy : public EnemyBase {
 public:
-
-	//追尾エネミーのコンストラクタ
 	TrackingEnemy();
+	//追尾エネミーのコンストラクタ
+	TrackingEnemy(const tnl::Vector3& pos, int gpc_hdl) :EnemyBase(pos, gpc_hdl) {};
 	void update(float delta_time);
-	void draw();
-	bool getAliveFlag();
+	void draw(const Shared<Camera> camera)override;
+	//int getAnimeHdls();
 
+	void Delete();
+
+	
 private:
 
 	//追尾エネミー位置情報
-	tnl::Vector3 te_pos_;
+	//tnl::Vector3 e_draw_pos_;
 	//追尾エネミーサイズ
-	const int te_width_ = 48;						//幅			
-	const int te_height_ = 48;						//高さ
+	const int te_width_ = 32;						//幅			
+	const int te_height_ = 32;						//高さ
 
 	float elapsed_time_ = 0.0f;
 
 
 
 	//エネミーアニメーション種類（向き）
-	enum TrackingEnemyAnime {
+	enum  TrackingEnemyAnime {
 		TE_DIR_LEFT,
 		TE_DIR_RIGHT,
 		TE_DIR_MAX
@@ -50,31 +54,33 @@ private:
 
 };
 
-class LapsEnemy : public EnemyBase {
-public:
-
-	LapsEnemy();
-
-};
+//class LapsEnemy : public EnemyBase {
+//public:
+//
+//	LapsEnemy();
+//
+//};
 
 //射撃エネミー 99
 class ShootEnemy : public EnemyBase {
 public:
-
-	//射撃エネミーコンストラクタ
 	ShootEnemy();
+	//射撃エネミーコンストラクタ
+	ShootEnemy(const tnl::Vector3& pos, int gpc_hdl) :EnemyBase(pos, gpc_hdl) {};
 	//射撃エネミー位置情報取得関数
 	tnl::Vector3& getS_EnemyPos();
 
 	void update(float delta_time);
-	void draw();
-	bool getAliveFlag();
+	void draw(const Shared<Camera> camera)override;
+	
+
+	//void Delete();
 
 	std::list<EnemyBullet*> e_bullet_list;
-
+	
 private:
 
-	tnl::Vector3 se_pos_;
+	//tnl::Vector3 e_draw_pos_;
 
 	//幅
 	const int se_width_ = 32;
@@ -95,5 +101,7 @@ private:
 	int se_anim_hdls_[SE_DIR_MAX][3];
 
 	Shared<Player> player_;
+
+
 };
 

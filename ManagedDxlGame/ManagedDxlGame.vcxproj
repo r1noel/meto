@@ -176,6 +176,7 @@
     <ClCompile Include="program\dxlib_ext\OBJLoader.cpp" />
     <ClCompile Include="program\game\camera\camera.cpp" />
     <ClCompile Include="program\game\chara\enemy.cpp" />
+    <ClCompile Include="program\game\chara\enemy_base.cpp" />
     <ClCompile Include="program\game\chara\enemy_manager.cpp" />
     <ClCompile Include="program\game\chara\player.cpp" />
     <ClCompile Include="program\game\common\gm_manager.cpp" />

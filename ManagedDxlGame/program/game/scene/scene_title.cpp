@@ -33,7 +33,7 @@ void SceneTitle::update(float delta_time) {
 
 void SceneTitle::draw() {
 	SetFontSize(50);
-	DrawStringEx(525, 200, -1, "");
+	DrawStringEx(500, 200, -1, "妖夢　百妖夜行");
 	SetFontSize(20);
 	DrawStringEx(525, 350, -1, "PLEASE ENTER KEY OR PAD KEY");
 	DrawStringEx(1050, 700, -1, "ESCキーでゲームを終了");
