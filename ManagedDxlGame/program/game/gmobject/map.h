@@ -19,7 +19,7 @@ private:
 	std::string map_data_csv_pass_;								//マップCSVデータパス
 	std::vector < std::vector <int>> map_data_;					//マップデータ
 
-	tnl::Vector3 pos_;
+	//tnl::Vector3 pos_;
 
 
 
@@ -27,7 +27,7 @@ public:
 
 	Map();
 
-	void update(float delta_time, const Shared<Camera> camera);
+	void update(float delta_time);
 	void draw(const Shared<Camera> camera);
 	std::list<MapChip*> map_list_;
 	

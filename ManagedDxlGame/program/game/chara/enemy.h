@@ -16,7 +16,7 @@ public:
 	TrackingEnemy(const tnl::Vector3& pos, int gpc_hdl) :EnemyBase(pos, gpc_hdl) {};
 	void update(float delta_time);
 	void draw(const Shared<Camera> camera)override;
-	//int getAnimeHdls();
+	int getAnimeHdls();
 
 	void Delete();
 

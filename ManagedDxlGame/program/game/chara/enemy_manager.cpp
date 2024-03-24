@@ -21,7 +21,7 @@ EnemyManager::EnemyManager(){
 		for (int x = 0; x < map_data_[y].size();++x) {
 
 			if (map_data_[y][x] == 98) {
-				t_enemy_ = std::make_shared<TrackingEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]);
+				enemies_list_.emplace_back(std::make_shared<TrackingEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]));
 			}
 			if (map_data_[y][x] == 99) {
 				s_enemy_ = std::make_shared<ShootEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]);
@@ -34,15 +34,16 @@ EnemyManager::EnemyManager(){
 
 void EnemyManager::draw(const Shared<Camera> camera) {
 
-	//auto it = enemies_list_.begin();
-	//while (it != enemies_list_.end()) {
+	auto it = enemies_list_.begin();
+	while (it != enemies_list_.end()) {
 
-		t_enemy_->draw(camera);
+		(*it)->draw(camera);
+		DrawRotaGraph((*it)->e_draw_pos_.x,(*it)-> e_draw_pos_.y, 1.0f, 0, 0, t_enemy_->getAnimeHdls(), true);
 
 		s_enemy_->draw(camera);
 
-	//	++it;
-	//}
+		++it;
+	}
 
 
 }
@@ -61,4 +62,5 @@ void EnemyManager::update(float delta_time) {
 
 	//	++it;
 	//}
+
 }

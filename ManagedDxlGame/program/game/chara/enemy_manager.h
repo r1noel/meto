@@ -1,9 +1,9 @@
 #pragma once
 #include "../gmobject/map.h"
 #include "../gmobject/m_chip.h"
+#include "../camera/camera.h"
 #include "enemy_base.h"
 #include "enemy.h"
-#include "../camera/camera.h"
 #include <list>
 
 class EnemyManager {

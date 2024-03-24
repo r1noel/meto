@@ -9,12 +9,13 @@ ScenePlay::ScenePlay() {
 
 	//マップ生成
 	map_ = std::make_shared<Map>();
+
+	enemies_ = std::make_shared<EnemyManager>();
 	//プレイヤー生成
 	player_ = std::make_shared<Player>();
 	//カメラ生成
 	camera_ = std::make_shared<Camera>(player_->getPlayerPos());
 
-	enemies_ = std::make_shared<EnemyManager>();
 	////追尾エネミー生成
 	//t_enemy_ = std::make_shared<TrackingEnemy>();
 	////射撃エネミー生成
@@ -33,8 +34,8 @@ ScenePlay::~ScenePlay() {
 void ScenePlay::draw() {
 
 	if (map_)map_->draw(camera_);
-	if (player_) player_->draw(camera_);
 	if (enemies_)enemies_->draw(camera_);
+	if (player_) player_->draw(camera_);
 
 
 	//DrawStringEx(0, 400, -1, "up = %d", unl::jump_reset_flag_);
@@ -46,9 +47,9 @@ void ScenePlay::update(float delta_time) {
 	//背景画像の表示
 	DrawRotaGraph(630, 350, 1.0f, 0, map_->getGpcHdl(), true);
 	//if (map_)map_->update(delta_time, camera_);
+	if (enemies_) enemies_->update(delta_time);
 	if (player_) player_->update(delta_time);
 	if (camera_) camera_->update(delta_time,player_->getPlayerPos());
-	if (enemies_) enemies_->update(delta_time);
 	//if (t_enemy_)t_enemy_->update(delta_time,camera_);
 	//if (s_enemy_)s_enemy_->update(delta_time,camera_);
 

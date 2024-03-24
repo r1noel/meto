@@ -1,6 +1,6 @@
 #include "../dxlib_ext/dxlib_ext.h"
-#include "enemy.h"
 #include "../common/gm_manager.h"
+#include "enemy.h"
 
 TrackingEnemy::TrackingEnemy() {
 
@@ -24,14 +24,17 @@ TrackingEnemy::TrackingEnemy() {
 
 }
 
+int TrackingEnemy::getAnimeHdls() {
+
+	return te_anim_hdls_[te_anim_ctrl_dir_][te_anim_ctr_frame_];
+
+}
+
 void TrackingEnemy::draw(const Shared<Camera> camera) {
 	
-	DrawRotaGraph(e_draw_pos_.x, e_draw_pos_.y, 1.0f, 0, te_anim_hdls_[te_anim_ctrl_dir_][te_anim_ctr_frame_], true);
 	//メモ　一番最後に番号をうった場所にBOXだけ表示されている？
 	DrawBoxEx(e_draw_pos_, te_width_, te_height_, false);
 	DrawStringEx(10, 80, -1, "Tエネミー.x = %f y = %f", e_draw_pos_.x, e_draw_pos_.y);
-	
-
 
 }
 
@@ -93,7 +96,7 @@ ShootEnemy::ShootEnemy() {
 
 void ShootEnemy::draw(const Shared<Camera> camera) {
 
-	DrawRotaGraph(e_draw_pos_.x,e_draw_pos_.y, 1.0f, 0, se_anim_hdls_[se_anim_ctrl_dir_][se_anim_ctr_frame_], true);
+	DrawRotaGraph(e_draw_pos_.x,e_draw_pos_.y, 1.0f, 0,0, se_anim_hdls_[se_anim_ctrl_dir_][se_anim_ctr_frame_], true);
 	//メモ　一番最後に番号を撃った場所にBOXだけ表示されている？
 	DrawStringEx(10, 60, -1, "Sエネミー.x = %f y = %f", e_draw_pos_.x, e_draw_pos_.y);
 	DrawBoxEx(e_draw_pos_, se_width_, se_height_, false);
