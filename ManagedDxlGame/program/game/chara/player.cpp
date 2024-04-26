@@ -36,7 +36,6 @@ void Player::draw(const Shared<Camera> camera) {
 
 void Player::update(float delta_time) {
 
-	GameManager* mgr = GameManager::GetInstance();
 	const int attack_effect_ = 15;
 	//アニメーション再生
 	anim_time_count_ += delta_time;
@@ -62,9 +61,6 @@ void Player::update(float delta_time) {
 		effect_time_count_ += delta_time;		
 		if (tnl::Input::IsMouseTrigger(eMouseTrigger::IN_LEFT)) {					//攻撃
 		
-
-			
-
 			if (effect_time_count_ > 0.1f) {
 				effect_ctrl_fream_++;
 				effect_ctrl_fream_ %= (attack_effect_ + 1);

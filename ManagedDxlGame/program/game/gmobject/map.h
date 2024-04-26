@@ -2,6 +2,7 @@
 #include "m_chip.h"
 #include "../camera/camera.h"
 #include <list>
+#include <vector>
 
 class Map {
 private:
@@ -21,7 +22,7 @@ private:
 
 	//tnl::Vector3 pos_;
 
-
+	int voidGraph = 0;
 
 public:
 
@@ -30,10 +31,14 @@ public:
 	void update(float delta_time);
 	void draw(const Shared<Camera> camera);
 	std::list<MapChip*> map_list_;
+
+	std::vector<std::vector<MapChip*>> mapChipList;
 	
 	int getWidth();
 	int getHeight();
 	int getGpcHdl();
 	std::vector < std::vector <int>> getMapData();
+
+	MapChip* getMapChip(int xPos, int yPos);
 
 };

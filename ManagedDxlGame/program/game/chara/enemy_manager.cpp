@@ -1,5 +1,8 @@
 #include "../dxlib_ext/dxlib_ext.h"
 #include "enemy_manager.h"
+#include <algorithm>
+#include"../chara/enemy.h"
+#include "../common/gm_manager.h"
 
 EnemyManager::EnemyManager(){
 
@@ -23,9 +26,9 @@ EnemyManager::EnemyManager(){
 			if (map_data_[y][x] == 98) {
 				enemies_list_.emplace_back(std::make_shared<TrackingEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]));
 			}
-			if (map_data_[y][x] == 99) {
-				s_enemy_ = std::make_shared<ShootEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]);
-			}
+			//if (map_data_[y][x] == 99) {
+			//	s_enemy_ = std::make_shared<ShootEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]);
+			//}
 			
 		}
 	}
@@ -34,33 +37,50 @@ EnemyManager::EnemyManager(){
 
 void EnemyManager::draw(const Shared<Camera> camera) {
 
-	auto it = enemies_list_.begin();
-	while (it != enemies_list_.end()) {
+	//auto it = enemies_list_.begin();
+	//while (it != enemies_list_.end()) {
 
-		(*it)->draw(camera);
-		DrawRotaGraph((*it)->e_draw_pos_.x,(*it)-> e_draw_pos_.y, 1.0f, 0, 0, t_enemy_->getAnimeHdls(), true);
+	//	(*it)->draw(camera);
+	//	DrawRotaGraph((*it)->e_draw_pos_.x,(*it)-> e_draw_pos_.y, 1.0f, 0, 0, t_enemy_->getAnimeHdls(), true);
 
-		s_enemy_->draw(camera);
+	//	s_enemy_->draw(camera);
 
-		++it;
+	//	++it;
+	//}
+
+	for (auto& enemy : enemies_list_) {
+
+		enemy->draw(camera);
+
 	}
 
 
 }
 
+bool EnemyManager::sortDistanceList(Shared<EnemyBase>& enemy1, Shared<EnemyBase>& enemy2) {
+
+	auto pos1 = enemy1->e_draw_pos_;
+	float distance1 = GameManager::GetInstance()->GetPlayerDistance(pos1);
+	auto pos2 = enemy2->e_draw_pos_;
+	float distance2 = GameManager::GetInstance()->GetPlayerDistance(pos2);
+
+	return distance1 < distance2;
+
+}
 void EnemyManager::update(float delta_time) {
 
-	t_enemy_->update(delta_time);
-	s_enemy_->update(delta_time);
-	//auto it = enemies_list_.begin();
-	//while (it != enemies_list_.end()) {
+	for (auto& enemy : enemies_list_) {
 
-	//	(*it)->update(delta_time, camera);
-	//	//if (!(*it)->getAliveFlag()) {
+		//ƒvƒŒƒCƒ„[‚Æ‚Ì“–‚½‚è”»’è	
+		bool isEnemyHit = GameManager::GetInstance()->isIntersectPlayerAndEnemy();
 
-	//	//}
+		if (isEnemyHit)
+			GameManager::GetInstance()->deathPlayer();
+	}
 
-	//	++it;
-	//}
+	for (auto& enemy : enemies_list_) {
+
+		enemy->update(delta_time);
+	}
 
 }

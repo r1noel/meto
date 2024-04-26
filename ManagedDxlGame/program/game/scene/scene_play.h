@@ -14,15 +14,11 @@ public:
 	void update(float delta_time) override;
 	void draw() override;
 
-
 private:
 
 	Shared<Map> map_ = nullptr;
 	Shared<Player> player_ = nullptr;
 	Shared<Camera> camera_ = nullptr;
 	Shared<EnemyManager>enemies_ = nullptr;
-	//Shared<TrackingEnemy> t_enemy_ = nullptr;
-	//Shared<ShootEnemy> s_enemy_ = nullptr;
-
 
 };

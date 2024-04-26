@@ -5,14 +5,19 @@
 class EnemyBase {
 public:
 
-	 EnemyBase(const tnl::Vector3& pos, int gpc_hdl) : e_pos_(pos), e_gpc_hdl_(gpc_hdl){};
+	 EnemyBase(const tnl::Vector3& pos, int gpc_hdl) : e_draw_pos_(pos), e_gpc_hdl_(gpc_hdl){};
 
 	//bool getAliveFlag() { return e_alive_flag = true; };
 	 tnl::Vector3 e_pos_ {0, 0, 0};
 
+	 virtual void update(float delta_time) = 0;
+
 	 virtual void draw(const Shared<Camera> camera);
 	 tnl::Vector3 e_draw_pos_;	//“G‚ÌˆÊ’u
 
+	 int getAnimeHdls() {
+		 return e_gpc_hdl_;
+	 }
 
 protected:
 

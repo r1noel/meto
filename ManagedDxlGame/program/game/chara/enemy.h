@@ -13,10 +13,12 @@ class TrackingEnemy : public EnemyBase {
 public:
 	TrackingEnemy();
 	//追尾エネミーのコンストラクタ
-	TrackingEnemy(const tnl::Vector3& pos, int gpc_hdl) :EnemyBase(pos, gpc_hdl) {};
-	void update(float delta_time);
+	TrackingEnemy(const tnl::Vector3& pos, int gpc_hdl);
+	void update(float delta_time)override;
 	void draw(const Shared<Camera> camera)override;
 	int getAnimeHdls();
+	int getTeWidthSize();
+	int getTeHeightSize();
 
 	void Delete();
 
@@ -31,7 +33,7 @@ private:
 
 	float elapsed_time_ = 0.0f;
 
-
+	const float DETECT_RANGE = 300.0f;
 
 	//エネミーアニメーション種類（向き）
 	enum  TrackingEnemyAnime {

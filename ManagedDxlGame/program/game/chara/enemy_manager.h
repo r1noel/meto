@@ -22,11 +22,13 @@ public:
 
 private:
 
-
+	bool sortDistanceList(Shared<EnemyBase>& enemy1, Shared<EnemyBase>& enemy2);
 
 	Shared<Map> map_ = nullptr;
+
 	Shared<TrackingEnemy> t_enemy_ = nullptr;
 	Shared<ShootEnemy> s_enemy_ = nullptr;
+
 	std::vector < std::vector <int>> map_data_;
 	std::string gpc_map_chip_hdls_pass_;						//画像パス
 	int map_chip_width_;										//マップチップの幅
