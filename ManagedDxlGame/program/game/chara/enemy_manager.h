@@ -16,7 +16,8 @@ public:
 
 
 	//std::list<MapChip*> map_list_;
-	std::list<Shared<EnemyBase>> enemies_list_;
+	//std::list<Shared<EnemyBase>> enemies_list_;
+	std::list<Shared<TrackingEnemy>> enemies_list_;
 	
 	
 

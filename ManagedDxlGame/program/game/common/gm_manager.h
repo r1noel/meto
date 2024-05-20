@@ -21,6 +21,7 @@ public:
 	Shared<Player> getPlayer();
 	Shared<Map> getMap();
 	Shared<EnemyManager> getEnemyManager();
+	Shared<SceneBase> getNowScene();
 
 	MapChip* getMapChip(int x, int y);
 

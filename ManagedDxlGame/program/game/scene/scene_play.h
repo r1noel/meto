@@ -13,6 +13,7 @@ public:
 	virtual ~ScenePlay();
 	void update(float delta_time) override;
 	void draw() override;
+	Shared<Camera> getCamera();
 
 private:
 

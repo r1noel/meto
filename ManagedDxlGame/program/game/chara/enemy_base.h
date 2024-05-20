@@ -13,10 +13,13 @@ public:
 	 virtual void update(float delta_time) = 0;
 
 	 virtual void draw(const Shared<Camera> camera);
-	 tnl::Vector3 e_draw_pos_;	//“G‚ÌˆÊ’u
+
 
 	 int getAnimeHdls() {
 		 return e_gpc_hdl_;
+	 }
+	 tnl::Vector3& getEnemyPos() {
+		 return e_draw_pos_;
 	 }
 
 protected:
@@ -28,6 +31,8 @@ protected:
 	int e_gpc_hdl_;				//“G‚Ì‰æ‘œƒnƒ“ƒhƒ‹
 	float e_move_speed_;		//“G‚ÌˆÚ“®‘¬“x
 	float e_view_angle_;		//“G‚Ì‹–ìŠp
+	tnl::Vector3 e_draw_pos_;	//“G‚ÌˆÊ’u
+
 	//¶‘¶ƒtƒ‰ƒO
 	bool e_alive_flag = true;
 };

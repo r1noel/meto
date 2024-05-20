@@ -54,8 +54,8 @@ void ScenePlay::update(float delta_time) {
 
 	int player_width = player_->getWidthSize();
 	int player_height = player_->getHeightSize();
-
 	
+
 
 	//ステージとプレイヤーの当たり判定処理
 	auto it = map_->map_list_.begin();
@@ -91,10 +91,12 @@ void ScenePlay::update(float delta_time) {
 				}
 			}
 		}
-		//エネミーとマップチップの当たり判定補正
-
 		it++;
 
 	}
 	
+}
+
+Shared<Camera> ScenePlay::getCamera() {
+	return camera_;
 }

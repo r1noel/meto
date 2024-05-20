@@ -27,8 +27,8 @@ TrackingEnemy::TrackingEnemy(const tnl::Vector3& pos, int gpc_hdl) : EnemyBase(p
 
 	std::string files[TE_DIR_MAX] = {
 
-	 "graphics/te_left.png",
-	 "graphics/te_right.png"
+	 "graphics/se_left.png",
+	 "graphics/se_right.png"
 
 	};
 
@@ -97,6 +97,8 @@ int TrackingEnemy::getTeHeightSize() {
 	return te_height_;
 
 }
+
+
 
 ShootEnemy::ShootEnemy() {
 

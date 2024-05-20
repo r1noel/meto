@@ -105,7 +105,7 @@ bool GameManager::isIntersectPlayerAndEnemy() {
 
 	for (auto& enemy : enemyList) {
 
-		float distance = GetPlayerDistance(enemy->e_draw_pos_);
+		float distance = GetPlayerDistance(enemy->getEnemyPos());
 
 		//‚à‚µ‹——£‚ª100ˆÈã—£‚ê‚Ä‚¢‚½‚ç”»’è‚µ‚È‚¢
 		if (distance > 100)

@@ -19,6 +19,7 @@ public:
 	int getAnimeHdls();
 	int getTeWidthSize();
 	int getTeHeightSize();
+	bool isActive() { return is_active_; }
 
 	void Delete();
 
@@ -49,6 +50,7 @@ private:
 	int te_anim_ctr_frame_ = 0;
 	//追尾エネミーアニメーションハンドル
 	int te_anim_hdls_[TE_DIR_MAX][3];
+	bool is_active_ = true;
 
 private:
 
