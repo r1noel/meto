@@ -20,7 +20,6 @@ public:
 	std::list<Shared<TrackingEnemy>> enemies_list_;
 	
 	
-
 private:
 
 	bool sortDistanceList(Shared<EnemyBase>& enemy1, Shared<EnemyBase>& enemy2);

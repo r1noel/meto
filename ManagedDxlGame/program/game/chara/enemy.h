@@ -34,6 +34,10 @@ private:
 
 	float elapsed_time_ = 0.0f;
 
+	float speed_ = 0.0f;						//プレイヤー速度
+	float acceleration_ = 1.0f;					//重力加速度
+	float drop_time_ = 0.0f;					//滞空時間
+
 	const float DETECT_RANGE = 300.0f;
 
 	//エネミーアニメーション種類（向き）

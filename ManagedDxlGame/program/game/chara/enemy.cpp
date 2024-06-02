@@ -16,7 +16,7 @@ void TrackingEnemy::draw(const Shared<Camera> camera) {
 	tnl::Vector3 draw_pos = e_draw_pos_ - camera->target_ + tnl::Vector3(DXE_WINDOW_WIDTH >> 1, DXE_WINDOW_HEIGHT >> 1, 0);
 
 	//メモ　一番最後に番号をうった場所にBOXだけ表示されている？
-	DrawBoxEx(e_draw_pos_, te_width_, te_height_, false);
+	
 	DrawStringEx(10, 80, -1, "Tエネミー.x = %f y = %f", draw_pos.x, draw_pos.y);
 
 	DrawRotaGraph(draw_pos.x, draw_pos.y, 1, 0, te_anim_hdls_[0][0], false);

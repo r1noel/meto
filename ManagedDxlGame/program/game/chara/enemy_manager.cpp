@@ -50,8 +50,9 @@ void EnemyManager::draw(const Shared<Camera> camera) {
 	//	++it;
 	//}
 
+	
 	for (auto& enemy : enemies_list_) {
-
+		
 		enemy->draw(camera);
 
 	}
@@ -71,58 +72,58 @@ bool EnemyManager::sortDistanceList(Shared<EnemyBase>& enemy1, Shared<EnemyBase>
 }
 void EnemyManager::update(float delta_time) {
 
+
 	for (auto& enemy : enemies_list_) {
 		
 		if (!enemy->isActive()) {
 			continue;
 		}
 
-		//ステージとエネミーの当たり判定処理
-		auto it = map_->map_list_.begin();
+		////ステージとエネミーの当たり判定処理
+		//auto it = map_->map_list_.begin();
 
-		while (it != map_->map_list_.end()) {
+		//while (it != map_->map_list_.end()) {
 
-			int chipNum = (*it)->GetChipNum();
+		//	int chipNum = (*it)->GetChipNum();
 
-			if (chipNum == 98 || chipNum == 99) {
-				it++;
-				continue;
-			}
-			auto e_it = enemies_list_.begin();
+		//	if (chipNum == 98 || chipNum == 99) {
+		//		it++;
+		//		continue;
+		//	}
 
-			while (e_it != enemies_list_.end())
-			{
-				//エネミーポジション取得
-				tnl::Vector3 e_prev_pos = (*e_it)->getEnemyPos();
-				
+		//	auto e_it = enemies_list_.begin();
+		//	while (e_it != enemies_list_.end())
+		//	{
+		//		//エネミーポジション取得
+		//		tnl::Vector3 e_prev_pos = (*e_it)->getEnemyPos();
+		//		
 
-				//エネミーサイズ取得
-				int enemy_width = (*e_it)->getTeWidthSize();
-				int enemy_height = (*e_it)->getTeHeightSize();
+ 	//			int enemy_width = (*e_it)->getTeWidthSize();
+		//		int enemy_height = (*e_it)->getTeHeightSize();
 
-				//エネミーとマップチップの当たり判定補正
-				if (unl::IsIntersectRectToCorrectPosition(
-					(*e_it)->getEnemyPos(),
-					e_prev_pos,
-					enemy_width,
-					enemy_height,
-					(*it)->map_chip_pos_,
-					map_->getWidth(),
-					map_->getHeight())) {
-				}
-				e_it++;
-				
-			}
-			
-			it++;
-			/*b++;
-			if (b > 1000) { 
-				break; 
-			}*/
+		//		//エネミーとマップチップの当たり判定補正
+		//		if (unl::IsIntersectRectToCorrectPosition(
+		//			(*e_it)->getEnemyPos(),
+		//			e_prev_pos,
+		//			enemy_width,
+		//			enemy_height,
+		//			(*it)->map_chip_pos_,
+		//			map_->getWidth(),
+		//			map_->getHeight())) {
+		//		}
+		//		e_it++;
+		//		
+		//	}
+		//	
+		//	it++;
+		//	/*b++;
+		//	if (b > 1000) { 
+		//		break; 
+		//	}*/
 
-		}
+		//}
 
-		//プレイヤーとの当たり判定	
+		//プレイヤーとの当たり判定呼出	
 		bool isEnemyHit = GameManager::GetInstance()->isIntersectPlayerAndEnemy();
 
 		if (isEnemyHit)

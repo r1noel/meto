@@ -11,12 +11,11 @@ SceneTitle::SceneTitle() {
 	title_bgm_ = LoadSoundMem("sound/gravity.wav");
 	//BGMループ再生
 	PlaySoundMem(title_bgm_, DX_PLAYTYPE_LOOP, true);
+
 }
 
 void SceneTitle::update(float delta_time) {
 
-	//背景画像表示
-	DrawRotaGraph(630, 350, 1.0f, 0, title_gpc_hdl_, true);
 	//プレイシーンへ移動
 	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN) || tnl::Input::IsPadDownTrigger(ePad::KEY_MAX)) {
 		auto mgr = GameManager::GetInstance();
@@ -29,12 +28,17 @@ void SceneTitle::update(float delta_time) {
 	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_ESCAPE)) {
 		DxLib_End();
 	}
+
 }
 
 void SceneTitle::draw() {
-	SetFontSize(50);
+
+	//背景画像表示
+	DrawRotaGraph(630, 350, 1.0f, 0, title_gpc_hdl_, true);
+	//SetFontSize(50);
 	DrawStringEx(500, 200, -1, "妖夢　百妖夜行");
-	SetFontSize(20);
+	//SetFontSize(20);
 	DrawStringEx(525, 350, -1, "PLEASE ENTER KEY OR PAD KEY");
 	DrawStringEx(1050, 700, -1, "ESCキーでゲームを終了");
+
 }

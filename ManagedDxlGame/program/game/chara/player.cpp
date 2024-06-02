@@ -30,11 +30,17 @@ void Player::draw(const Shared<Camera> camera) {
 	DrawRotaGraph(draw_pos.x, draw_pos.y, 1.0f, 0, anim_hdls_[anim_ctrl_dir_][anim_ctr_frame_], true);							//プレイヤーの造形
 	DrawRotaGraph(draw_pos.x *1, draw_pos.y, 0.5f, 0, atk_effect_hdl_[effect_ctrl_fream_], true);
 
+	DrawStringEx(0, 500, -1, "x = %d", xxx);
 	//DrawBoxEx(draw_pos, width_, height_, false);
 
 }
 
 void Player::update(float delta_time) {
+	xxx = player_pos_.x;
+
+	xxx /= 48;
+
+	//xxx += 13;
 
 	const int attack_effect_ = 15;
 	//アニメーション再生
@@ -76,12 +82,12 @@ void Player::update(float delta_time) {
 	}
 	
 	//デバック用
-	/*if (tnl::Input::IsKeyDown(eKeys::KB_W) ){
+	if (tnl::Input::IsKeyDown(eKeys::KB_W) ){
 		player_pos_.y -= 20.0f;
 	}
 	if (tnl::Input::IsKeyDown(eKeys::KB_S)) {
 		player_pos_.y += 20.0f;
-	}*/
+	}
 
 	player_pos_.y += speed_;
 

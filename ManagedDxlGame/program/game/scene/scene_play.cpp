@@ -32,6 +32,8 @@ ScenePlay::~ScenePlay() {
 
 void ScenePlay::draw() {
 
+	//”wŒi‰æ‘œ‚Ì•\¦
+	DrawRotaGraph(630, 350, 1.0f, 0, map_->getGpcHdl(), true);
 	if (map_)map_->draw(camera_);
 	if (enemies_)enemies_->draw(camera_);
 	if (player_) player_->draw(camera_);
@@ -42,11 +44,9 @@ void ScenePlay::draw() {
 }
 
 void ScenePlay::update(float delta_time) {
-
+	
 	tnl::Vector3 prev_pos = player_->getPlayerPos();
 
-	//”wŒi‰æ‘œ‚Ì•\¦
-	DrawRotaGraph(630, 350, 1.0f, 0, map_->getGpcHdl(), true);
 	//if (map_)map_->update(delta_time, camera_);
 	if (enemies_) enemies_->update(delta_time);
 	if (player_) player_->update(delta_time);
@@ -55,7 +55,6 @@ void ScenePlay::update(float delta_time) {
 	int player_width = player_->getWidthSize();
 	int player_height = player_->getHeightSize();
 	
-
 
 	//ƒXƒe[ƒW‚ÆƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’èˆ—
 	auto it = map_->map_list_.begin();

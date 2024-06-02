@@ -30,6 +30,8 @@ static std::chrono::system_clock::time_point clock_start, clock_end;
 static std::chrono::system_clock::time_point fps_clock_start, fps_clock_end;
 
 extern std::string g_drag_file_path;
+extern float g_delta_time;
+extern float g_unlimit_delta_time;
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -108,6 +110,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         fps_clock_end = std::chrono::system_clock::now();
         double fps_mic = static_cast<double>(std::chrono::duration_cast<std::chrono::microseconds>(fps_clock_end - fps_clock_start).count());
         float fps_mils = static_cast<float>(fps_mic / 1000.0);
+        g_unlimit_delta_time = fps_mils;
         float fps_lim = 1000.0f / ( DXE_FIX_FPS + 0.5f ) ;
 
         if (fps_lim > fps_mils) {

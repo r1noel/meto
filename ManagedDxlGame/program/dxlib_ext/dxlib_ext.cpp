@@ -6,6 +6,8 @@
 #include "dxlib_ext_gui_value_slider.h"
 
 std::string g_drag_file_path;
+float g_delta_time = 0;
+float g_unlimit_delta_time = 0;
 
 
 //------------------------------------------------------------------------------------------------------------------------------
@@ -61,29 +63,38 @@ void DrawFpsIndicator(const tnl::Vector3& pos, float delta_time) {
 	static float sum_time = 0;
 	static float sum_fps = 0;
 	static float fps_rate = 0;
+	static float unlim_sum_fps = 0;
+	static float unlim_fps = 0;
+
 	static float width = 0;
 	static int call_num = 0;
+	static int font_hdl = 0;
+
+	if (0 == font_hdl) {
+		font_hdl = CreateFontToHandle(_T("DrawFpsIndicator"), 10, 9, DX_FONTTYPE_NORMAL, GetDefaultFontHandle());
+	}
 
 	sum_time += delta_time;
 	sum_fps += GetFPS();
+	g_unlimit_delta_time = (g_unlimit_delta_time > FLT_EPSILON) ? g_unlimit_delta_time : 1.0f;
+	unlim_sum_fps += 1000.0f / g_unlimit_delta_time;
 	call_num++;
 	if (sum_time > 0.1f) {
 		fps_rate = sum_fps / call_num;
 		fps_rate /= DXE_FIX_FPS;
 		sum_time = 0;
 		sum_fps = 0;
+		unlim_fps = unlim_sum_fps / (float)call_num;
+		unlim_sum_fps = 0;
 		call_num = 0;
 	}
 	width += ((198 * fps_rate) - width) * 0.05f;
-	int fs = GetFontSize();
-	SetFontSize(10);
 	int x = (int)pos.x;
 	int y = (int)pos.y;
-	DrawBox(x, y, x + 260, y + 10, 0, true);
+	DrawBox(x, y, x + 320, y + 10, 0, true);
 	DrawBox(x + 1, y + 1, x + 199, y + 9, -1, false);
 	DrawBox(x + 2, y + 2, x + (int)width, y + 8, 0xff77ff77, true);
-	DrawStringEx(pos.x + 210, pos.y, -1, "%.1f fps", DXE_FIX_FPS * fps_rate);
-	SetFontSize(fs);
+	DrawStringToHandleEx(pos.x + 210, pos.y, -1, font_hdl, "%.1f / %.1f fps", DXE_FIX_FPS * fps_rate, unlim_fps);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------

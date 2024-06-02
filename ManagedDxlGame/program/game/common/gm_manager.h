@@ -32,9 +32,9 @@ public:
 	bool isIntersectPlayerAndEnemy();
 
 	//ƒvƒŒƒCƒ„[€–SŠÖ”
-	void deathPlayer() {
+	void deathPlayer();
 
-	}
+	
 
 private:
 

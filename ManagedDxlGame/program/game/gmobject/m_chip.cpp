@@ -7,4 +7,5 @@ void MapChip::draw(const Shared<Camera> camera) {
 
 	DrawRotaGraph(draw_pos.x, draw_pos.y, 1.0, 0, map_chip_gpc_hdl_, true);
 
+	//DrawStringEx(0, 500, -1, "%.2f %.2f", m_map_chip_pos_.x, m_map_chip_pos_.y);
 }

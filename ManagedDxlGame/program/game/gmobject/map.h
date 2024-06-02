@@ -19,6 +19,8 @@ private:
 
 	std::string map_data_csv_pass_;								//マップCSVデータパス
 	std::vector < std::vector <int>> map_data_;					//マップデータ
+	std::string maphit_data_csv_pass_;							//マップ当たり判定用CSVデータパス
+	std::vector < std::vector <int>> maphit_data_;				//マップ当たり判定用データ
 
 	//tnl::Vector3 pos_;
 
@@ -33,6 +35,7 @@ public:
 	std::list<MapChip*> map_list_;
 
 	std::vector<std::vector<MapChip*>> mapChipList;
+	std::vector<std::vector<MapChip*>> maphitChipList;
 	
 	int getWidth();
 	int getHeight();

@@ -18,13 +18,16 @@ public:
 	float getDropTime();
 	int getJumpCount();
 
+	int xxx = 0;
 private:
+
+
 
 	//プレイヤー情報
 	std::string player_name_ = "";				//キャラネーム
 	int player_hp_ = 0;							//プレイヤーの体力
 	int player_atk_ = 0;						//プレイヤーの攻撃力
-	tnl::Vector3 player_pos_ {150,9350,0};	//プレイヤーの位置
+	tnl::Vector3 player_pos_ {150,2110,0};	//プレイヤーの位置
 	int jump_count_ = 0;						//ジャンプの回数
 	//プレイヤーサイズ
 	const int width_ = 46;						//幅

@@ -17,8 +17,10 @@ public:
 
 	int GetChipNum() { return chipNum; }
 
+	tnl::Vector2i m_map_chip_pos_ = { 0,0 };
 private:
 
 	int chipNum = -1;
+
 	
 };

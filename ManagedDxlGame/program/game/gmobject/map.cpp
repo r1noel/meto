@@ -25,11 +25,16 @@ Map::Map() {
 		map_chip_height_,
 		gpc_map_chip_hdls_);
 	//マップCSVデータのロード
-	map_data_csv_pass_ = "csv/map2.csv";
+	map_data_csv_pass_ = "csv/map1.csv";
 	//マップデータにCSVの情報を持たせる
 	map_data_ = tnl::LoadCsv<int>(map_data_csv_pass_);
 
+	maphit_data_csv_pass_ = "csv/maphit.csv";
+
+	maphit_data_ = tnl::LoadCsv<int>(maphit_data_csv_pass_);
+
 	mapChipList.resize(map_data_.size());
+	maphitChipList.resize(maphit_data_.size());
 	voidGraph = LoadGraph("graphics/blue.bmp");
 
 	//マップチップCSVデータの呼び出し
@@ -49,47 +54,42 @@ Map::Map() {
 			auto mapchip = new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), handle, chipNum);
 			mapChipList[y].emplace_back(mapchip);
 
+			
 
-			if (chipNum == -1) continue;
-				map_list_.emplace_back(new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]],chipNum));
 			
 		}
 	}
 
+	for (int y = 0; y < maphit_data_.size();++y) {
+		for (int x = 0; x < maphit_data_.size();++x) {
+
+			int chipNum2 = maphit_data_[y][x];
+			int handle2 = 0;
+		
+			auto maphitchip = new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), handle2, chipNum2);
+			maphitChipList[y].emplace_back(maphitchip);
+			if (chipNum2 == -1) continue;
+			map_list_.emplace_back(new MapChip(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[maphit_data_[y][x]], chipNum2));
+		}
+	}
 }
 
 void Map::draw(const Shared<Camera> camera) {
-
+	//ステージの表示
 	for (int i = 0; i < mapChipList.size(); ++i) {
 		for (int k = 0; k < mapChipList[i].size();++k) {
 			auto& chip = mapChipList[i][k];
 			chip->draw(camera);
 		}
 	}
-
-	//ステージの表示
-	//auto it = map_list_.begin();
-	//while (it != map_list_.end()) {
-
-	//	(*it)->draw(camera);
-
-	//	DrawRotaGraph((*it)->draw_pos.x, (*it)->draw_pos.y, 1.0, 0,(*it)-> map_chip_gpc_hdl_, true);
-
-	//	//DrawBoxEx((*it)->draw_pos, MapChip::CHIP_SIZE, MapChip::CHIP_SIZE, false);
-	//	++it;
+	//for (int i = 0; i < maphitChipList.size(); ++i) {
+	//	for (int k = 0; k < maphitChipList[i].size();++k) {
+	//		auto& chip = maphitChipList[i][k];
+	//		chip->draw(camera);
+	//	}
 	//}
-}
 
-//void Map::update(float delta_time, const Shared<Camera> camera) {
-//
-//	//auto it = map_list_.begin();
-//	//while (it != map_list_.end()) {
-//
-//	//	
-//	//	++it;
-//	//}
-//
-//}
+}
 
 int Map::getWidth() {
 

@@ -82,7 +82,7 @@ MapChip* GameManager::getMapChip(int x, int y) {
 	return map_->getMapChip(x, y);
 
 }
-
+//プレイヤーとエネミーの距離取得
 float GameManager::GetPlayerDistance(tnl::Vector3& enemyPos) {
 
 	float ret = 0.0f;
@@ -98,7 +98,7 @@ float GameManager::GetPlayerDistance(tnl::Vector3& enemyPos) {
 	return ret;
 
 }
-
+//プレイヤーエネミー当たり判定
 bool GameManager::isIntersectPlayerAndEnemy() {
 
 	auto& enemyList = enemyManager_->enemies_list_;
@@ -114,5 +114,15 @@ bool GameManager::isIntersectPlayerAndEnemy() {
 	}
 
 	return false;
+
+}
+
+void GameManager::deathPlayer() {
+
+	auto& enemyList = enemyManager_->enemies_list_;
+	for (auto& enemy : enemyList) {
+
+
+	}
 
 }
