@@ -17,6 +17,8 @@ void gameStart() {
 	//LoadDivGraph("graphics/p1_right.png", 3, 3, 1, 46, 48, ary);
 
 	GameManager::GetInstance(new SceneTitle());
+
+	
 }
 
 

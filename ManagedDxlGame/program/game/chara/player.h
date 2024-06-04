@@ -3,6 +3,7 @@
 
 class Camera;
 
+const tnl::Vector3 SPAWN_POS = { 150, 2110, 0 };
 
 class Player {
 public:
@@ -17,17 +18,16 @@ public:
 	float getSpeed();
 	float getDropTime();
 	int getJumpCount();
+	void setDeathFlag(bool death_flag);
 
 	int xxx = 0;
 private:
-
-
 
 	//プレイヤー情報
 	std::string player_name_ = "";				//キャラネーム
 	int player_hp_ = 0;							//プレイヤーの体力
 	int player_atk_ = 0;						//プレイヤーの攻撃力
-	tnl::Vector3 player_pos_ {150,2110,0};	//プレイヤーの位置
+	tnl::Vector3 player_pos_ = SPAWN_POS;		//プレイヤーの位置
 	int jump_count_ = 0;						//ジャンプの回数
 	//プレイヤーサイズ
 	const int width_ = 46;						//幅
@@ -38,6 +38,7 @@ private:
 	float drop_time_ = 0.0f;					//滞空時間
 
 	bool player_jump_flag_ = false;				//ジャンプをしているかの判定
+	bool death_flag_ = false;
 
 	//プレイヤーアニメーション種類（向き）
 	enum PlayerAnime {

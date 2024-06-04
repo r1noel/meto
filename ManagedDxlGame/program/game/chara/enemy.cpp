@@ -17,7 +17,7 @@ void TrackingEnemy::draw(const Shared<Camera> camera) {
 	
 	//DrawStringEx(10, 80, -1, "Tエネミー.x = %f y = %f", draw_pos.x, draw_pos.y);
 
-	DrawRotaGraph(draw_pos.x, draw_pos.y, 1, 0, te_anim_hdls_[0][0], false);
+	DrawRotaGraph(draw_pos.x, draw_pos.y, 1, 0, te_anim_hdls_[0][0], true);
 
 }
 

@@ -47,5 +47,6 @@ private:
 	Shared<Player> player_ = nullptr;
 	Shared<Map> map_ = nullptr;
 	Shared<EnemyManager> enemyManager_ = nullptr;
+	bool is_hit_ = false;
 
 };

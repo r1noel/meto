@@ -25,6 +25,10 @@ Player::Player() {
 
 void Player::draw(const Shared<Camera> camera) {
 
+	if (death_flag_) {
+		return;
+	}
+
 	tnl::Vector3 draw_pos = player_pos_ - camera->target_ + tnl::Vector3(DXE_WINDOW_WIDTH >> 1, DXE_WINDOW_HEIGHT >> 1, 0);		
 	DrawStringEx(10, 20, -1, "プレイヤー.x = %f y = %f", player_pos_.x, player_pos_.y);
 	DrawRotaGraph(draw_pos.x, draw_pos.y, 1.0f, 0, anim_hdls_[anim_ctrl_dir_][anim_ctr_frame_], true);							//プレイヤーの造形
@@ -40,9 +44,13 @@ void Player::update(float delta_time) {
 
 	xxx /= 48;
 
-	//xxx += 13;
+	if (death_flag_) {
+		return;
+	}
+
 
 	//const int attack_effect_ = 15;
+	
 	//アニメーション再生
 	anim_time_count_ += delta_time;
 	if (anim_time_count_ > 0.1f) {
@@ -60,29 +68,28 @@ void Player::update(float delta_time) {
 		anim_ctrl_dir_ = DIR_RIGHT;												//右向
 		player_pos_.x += 5.5f;													//右移動
 	}
-	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_SPACE) && jump_count_ <= 1 ) {
+	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_SPACE) && jump_count_ <= 1) {
 		jump();																	//ジャンプ
 	}
 	//if (effect_flag_) {
 		//effect_time_count_ += delta_time;		
-		if (tnl::Input::IsMouseTrigger(eMouseTrigger::IN_LEFT)) {					//攻撃
-		
-			//if (effect_time_count_ > 0.1f) {
-			//	effect_ctrl_fream_++;
-			//	effect_ctrl_fream_ %= (attack_effect_ + 1);
+	if (tnl::Input::IsMouseTrigger(eMouseTrigger::IN_LEFT)) {					//攻撃
 
-			//	if (effect_ctrl_fream_ == attack_effect_) {
-			//		effect_flag_ = false;
-			//	}
+		//if (effect_time_count_ > 0.1f) {
+		//	effect_ctrl_fream_++;
+		//	effect_ctrl_fream_ %= (attack_effect_ + 1);
 
-			//	effect_time_count_ = 0;
-			//}
+		//	if (effect_ctrl_fream_ == attack_effect_) {
+		//		effect_flag_ = false;
+		//	}
 
-		}
+		//	effect_time_count_ = 0;
+		//}
+
+	}
 	//}
-	
 	//デバック用
-	if (tnl::Input::IsKeyDown(eKeys::KB_W) ){
+	if (tnl::Input::IsKeyDown(eKeys::KB_W)) {
 		player_pos_.y -= 20.0f;
 	}
 	if (tnl::Input::IsKeyDown(eKeys::KB_S)) {
@@ -94,8 +101,9 @@ void Player::update(float delta_time) {
 	//ジャンプの落下処理
 	drop_time_ += delta_time;
 	speed_ += acceleration_ * drop_time_;
-
 }
+
+
 
 //ジャンプ機能
 void Player::jump() {
@@ -125,18 +133,24 @@ int Player::getHeightSize() {
 
 int Player::getJumpCount() {
 
-	return jump_count_ = 0;
+	return jump_count_= 0;
 
 }
 
 float Player::getDropTime() {
 
-	return drop_time_ = 0;
+	return drop_time_= 0;
 
 }
 
 float Player::getSpeed() {
 
 	return speed_ = 0;
+
+}
+
+void Player::setDeathFlag(bool death_flag) {
+
+	death_flag_ = death_flag;
 
 }

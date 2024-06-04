@@ -98,31 +98,28 @@ float GameManager::GetPlayerDistance(tnl::Vector3& enemyPos) {
 	return ret;
 
 }
-//プレイヤーエネミー当たり判定
+//プレイヤーエネミー距離判定
 bool GameManager::isIntersectPlayerAndEnemy() {
 
 	auto& enemyList = enemyManager_->enemies_list_;
-
+	
 	for (auto& enemy : enemyList) {
+
 
 		float distance = GetPlayerDistance(enemy->getEnemyPos());
 
-		//もし距離が100以上離れていたら判定しない
-		if (distance > 100)
-			return false;
+		//もし距離が5以下だったら
+		if (distance <= 5) {
+
+			return true;
+		}
 
 	}
 
 	return false;
-
 }
-
 void GameManager::deathPlayer() {
 
-	auto& enemyList = enemyManager_->enemies_list_;
-	for (auto& enemy : enemyList) {
-
-
-	}
+	player_->setDeathFlag(true);
 
 }
