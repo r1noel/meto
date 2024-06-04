@@ -61,7 +61,7 @@ Map::Map() {
 	}
 
 	for (int y = 0; y < maphit_data_.size();++y) {
-		for (int x = 0; x < maphit_data_.size();++x) {
+		for (int x = 0; x < maphit_data_[y].size();++x) {
 
 			int chipNum2 = maphit_data_[y][x];
 			int handle2 = 0;
@@ -82,12 +82,12 @@ void Map::draw(const Shared<Camera> camera) {
 			chip->draw(camera);
 		}
 	}
-	//for (int i = 0; i < maphitChipList.size(); ++i) {
-	//	for (int k = 0; k < maphitChipList[i].size();++k) {
-	//		auto& chip = maphitChipList[i][k];
-	//		chip->draw(camera);
-	//	}
-	//}
+	for (int i = 0; i < maphitChipList.size(); ++i) {
+		for (int k = 0; k < maphitChipList[i].size();++k) {
+			auto& chip = maphitChipList[i][k];
+			chip->draw(camera);
+		}
+	}
 
 }
 

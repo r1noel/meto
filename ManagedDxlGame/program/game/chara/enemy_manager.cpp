@@ -11,9 +11,6 @@ EnemyManager::EnemyManager(){
 	map_ = std::make_shared<Map>();
 	map_data_ = map_->getMapData();
 
-	//t_enemy_ = std::make_shared<TrackingEnemy>();
-	//s_enemy_ = std::make_shared<ShootEnemy>();
-
 	map_chip_width_ = 48;
 	map_chip_height_ = 48;
 	map_chip_x_size_ = 5;
@@ -28,10 +25,6 @@ EnemyManager::EnemyManager(){
 			if (map_data_[y][x] == 98) {
 				enemies_list_.emplace_back(std::make_shared<TrackingEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]));
 			}
-			//if (map_data_[y][x] == 99) {
-			//	s_enemy_ = std::make_shared<ShootEnemy>(tnl::Vector3(x * map_chip_width_, y * map_chip_height_, 0), gpc_map_chip_hdls_[map_data_[y][x]]);
-			//}
-			
 		}
 	}
 	
@@ -73,55 +66,65 @@ bool EnemyManager::sortDistanceList(Shared<EnemyBase>& enemy1, Shared<EnemyBase>
 void EnemyManager::update(float delta_time) {
 
 
+	//画面の指定範囲内のみエネミーを動かす（範囲外はfalse）
+	for (auto& enemy : enemies_list_) {
+		if ((enemy->getEnemyPos() - camera_->target_).length() >= 640) {
+			enemy->setActive(false);
+		}
+		else {
+			enemy->setActive(true);
+		}
+	}
+
 	for (auto& enemy : enemies_list_) {
 		
 		if (!enemy->isActive()) {
 			continue;
 		}
 
-		////ステージとエネミーの当たり判定処理
-		//auto it = map_->map_list_.begin();
+		// ステージとエネミーの当たり判定処理
+		auto it = map_->map_list_.begin();
+		while (it != map_->map_list_.end()) {
 
-		//while (it != map_->map_list_.end()) {
+			int chipNum = (*it)->GetChipNum();
 
-		//	int chipNum = (*it)->GetChipNum();
+			if (chipNum == 98 || chipNum == 99) {
+				it++;
+				continue;
+			}
 
-		//	if (chipNum == 98 || chipNum == 99) {
-		//		it++;
-		//		continue;
-		//	}
+			auto e_it = enemies_list_.begin();
+			while (e_it != enemies_list_.end())
+			{
+				//条件を満たしていないものの当たり判定の処理をしない
+				if (!(*e_it)->isActive()) {
+					++e_it;
+					continue;
+				}
 
-		//	auto e_it = enemies_list_.begin();
-		//	while (e_it != enemies_list_.end())
-		//	{
-		//		//エネミーポジション取得
-		//		tnl::Vector3 e_prev_pos = (*e_it)->getEnemyPos();
-		//		
+				//エネミーポジション取得
+				tnl::Vector3 e_prev_pos = (*e_it)->getEnemyPos();
+				
 
- 	//			int enemy_width = (*e_it)->getTeWidthSize();
-		//		int enemy_height = (*e_it)->getTeHeightSize();
+ 				int enemy_width = (*e_it)->getTeWidthSize();
+				int enemy_height = (*e_it)->getTeHeightSize();
 
-		//		//エネミーとマップチップの当たり判定補正
-		//		if (unl::IsIntersectRectToCorrectPosition(
-		//			(*e_it)->getEnemyPos(),
-		//			e_prev_pos,
-		//			enemy_width,
-		//			enemy_height,
-		//			(*it)->map_chip_pos_,
-		//			map_->getWidth(),
-		//			map_->getHeight())) {
-		//		}
-		//		e_it++;
-		//		
-		//	}
-		//	
-		//	it++;
-		//	/*b++;
-		//	if (b > 1000) { 
-		//		break; 
-		//	}*/
-
-		//}
+				//エネミーとマップチップの当たり判定補正
+				if (unl::IsIntersectRectToCorrectPosition(
+					(*e_it)->getEnemyPos(),
+					e_prev_pos,
+					enemy_width,
+					enemy_height,
+					(*it)->map_chip_pos_,
+					map_->getWidth(),
+					map_->getHeight())) {
+				}
+				e_it++;
+				
+			}
+			
+			it++;
+		}
 
 		//プレイヤーとの当たり判定呼出	
 		bool isEnemyHit = GameManager::GetInstance()->isIntersectPlayerAndEnemy();
@@ -132,7 +135,9 @@ void EnemyManager::update(float delta_time) {
 	}
 
 	for (auto& enemy : enemies_list_) {
-
+		if (!enemy->isActive()) {
+			continue;
+		}
 		enemy->update(delta_time);
 
 		

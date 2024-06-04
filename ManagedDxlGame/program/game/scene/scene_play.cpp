@@ -20,6 +20,8 @@ ScenePlay::ScenePlay() {
 	//ƒJƒƒ‰¶¬
 	camera_ = std::make_shared<Camera>(player_->getPlayerPos());
 
+	enemies_->setCamera(camera_);
+
 	unl::jump_reset_flag_ = true;
 
 }
@@ -37,7 +39,6 @@ void ScenePlay::draw() {
 	if (map_)map_->draw(camera_);
 	if (enemies_)enemies_->draw(camera_);
 	if (player_) player_->draw(camera_);
-
 
 	//DrawStringEx(0, 400, -1, "up = %d", unl::jump_reset_flag_);
 	//DrawStringEx(0, 450, -1, "side = %d", unl::side_flag_);

@@ -17,9 +17,9 @@ void EnemyBullet::update(float delta_time) {
 	//プレイヤーの位置情報取得
 	tnl::Vector3 player_pos_ = player_->getPlayerPos();
 	//射撃エネミーの位置情報取得
-	tnl::Vector3 s_enemy_pos_ = s_enemy_->getS_EnemyPos();
+	//tnl::Vector3 s_enemy_pos_ = s_enemy_->getS_EnemyPos();
 	//プレイヤーの方向取得
-	tnl::Vector3 b_direction = player_pos_ - s_enemy_pos_;
+	//tnl::Vector3 b_direction = player_pos_ - s_enemy_pos_;
 
 
 

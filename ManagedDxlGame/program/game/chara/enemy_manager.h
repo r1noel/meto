@@ -13,10 +13,9 @@ public:
 	virtual ~EnemyManager() {};
 	void update(float delta_time);
 	void draw(const Shared<Camera> camera);
+		
+	void setCamera(Shared<Camera> camera) { camera_ = camera; };
 
-
-	//std::list<MapChip*> map_list_;
-	//std::list<Shared<EnemyBase>> enemies_list_;
 	std::list<Shared<TrackingEnemy>> enemies_list_;
 	
 	
@@ -28,6 +27,7 @@ private:
 
 	Shared<TrackingEnemy> t_enemy_ = nullptr;
 	Shared<ShootEnemy> s_enemy_ = nullptr;
+	Shared<Camera> camera_ = nullptr;
 
 	std::vector < std::vector <int>> map_data_;
 	std::string gpc_map_chip_hdls_pass_;						//‰æ‘œƒpƒX
