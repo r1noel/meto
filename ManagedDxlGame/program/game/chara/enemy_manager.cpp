@@ -1,8 +1,9 @@
 #include "../dxlib_ext/dxlib_ext.h"
-#include"../unl.h"
+#include "../unl.h"
 #include "enemy_manager.h"
 #include <algorithm>
-#include"../chara/enemy.h"
+#include "../chara/enemy.h"
+#include "../scene/scene_gm_over.h"
 #include "../common/gm_manager.h"
 
 EnemyManager::EnemyManager(){
@@ -129,8 +130,11 @@ void EnemyManager::update(float delta_time) {
 		//プレイヤーとの当たり判定呼出	
 		bool isEnemyHit = GameManager::GetInstance()->isIntersectPlayerAndEnemy();
 
-		if (isEnemyHit)
+		if (isEnemyHit) {
 			GameManager::GetInstance()->deathPlayer();
+			auto mgr = GameManager::GetInstance();
+			mgr->changeScene(new SceneGameOver());
+		}
 
 	}
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -181,9 +181,12 @@
     <ClCompile Include="program\game\chara\player.cpp" />
     <ClCompile Include="program\game\common\gm_manager.cpp" />
     <ClCompile Include="program\game\gmobject\bullet.cpp" />
+    <ClCompile Include="program\game\gmobject\goal.cpp" />
     <ClCompile Include="program\game\gmobject\m_chip.cpp" />
     <ClCompile Include="program\game\gmobject\map.cpp" />
     <ClCompile Include="program\game\gm_main.cpp" />
+    <ClCompile Include="program\game\scene\scene_next.cpp" />
+    <ClCompile Include="program\game\scene\scene_gm_over.cpp" />
     <ClCompile Include="program\game\scene\scene_play.cpp" />
     <ClCompile Include="program\game\scene\scene_title.cpp" />
     <ClCompile Include="program\game\unl.cpp" />
@@ -245,9 +248,12 @@
     <ClInclude Include="program\game\common\gm_manager.h" />
     <ClInclude Include="program\game\common\gm_scene_base.h" />
     <ClInclude Include="program\game\gmobject\bullet.h" />
+    <ClInclude Include="program\game\gmobject\goal.h" />
     <ClInclude Include="program\game\gmobject\m_chip.h" />
     <ClInclude Include="program\game\gmobject\map.h" />
     <ClInclude Include="program\game\gm_main.h" />
+    <ClInclude Include="program\game\scene\scene_next.h" />
+    <ClInclude Include="program\game\scene\scene_gm_over.h" />
     <ClInclude Include="program\game\scene\scene_play.h" />
     <ClInclude Include="program\game\scene\scene_title.h" />
     <ClInclude Include="program\game\unl.h" />

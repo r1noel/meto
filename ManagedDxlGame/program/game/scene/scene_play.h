@@ -3,6 +3,7 @@
 #include "../gmobject/map.h"
 #include "../chara/player.h"
 #include "../chara/enemy_manager.h"
+#include "../gmobject/goal.h"
 
 class ScenePlay : public SceneBase {
 public:
@@ -21,5 +22,6 @@ private:
 	Shared<Player> player_ = nullptr;
 	Shared<Camera> camera_ = nullptr;
 	Shared<EnemyManager>enemies_ = nullptr;
+	Shared<Goal> goal_ = nullptr;
 
 };

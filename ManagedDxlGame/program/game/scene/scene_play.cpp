@@ -2,6 +2,7 @@
 #include"../unl.h"
 #include "scene_play.h"
 #include "scene_title.h"
+#include "scene_next.h"
 #include "../common/gm_manager.h"
 #include <math.h>
 
@@ -19,6 +20,8 @@ ScenePlay::ScenePlay() {
 
 	//ƒJƒƒ‰¶¬
 	camera_ = std::make_shared<Camera>(player_->getPlayerPos());
+
+	goal_ = std::make_shared<Goal>();
 
 	enemies_->setCamera(camera_);
 
@@ -94,7 +97,19 @@ void ScenePlay::update(float delta_time) {
 		it++;
 
 	}
-	
+	if (tnl::IsIntersectRect(
+		player_->getPlayerPos(),
+		player_width,
+		player_height,
+		goal_->getGoalPos(),
+		goal_->getGoalWidth(),
+		goal_->getGoalHeight()))
+	{
+		auto mgr = GameManager::GetInstance();
+			
+		mgr->changeScene(new SceneNext());
+
+	}
 }
 
 Shared<Camera> ScenePlay::getCamera() {

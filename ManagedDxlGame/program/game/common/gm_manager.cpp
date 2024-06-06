@@ -109,7 +109,7 @@ bool GameManager::isIntersectPlayerAndEnemy() {
 		float distance = GetPlayerDistance(enemy->getEnemyPos());
 
 		//‚à‚µ‹——£‚ª5ˆÈ‰º‚¾‚Á‚½‚ç
-		if (distance <= 5) {
+		if (distance <= 25) {
 
 			return true;
 		}
